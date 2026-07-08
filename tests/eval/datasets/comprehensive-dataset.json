@@ -1,0 +1,290 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "horaires_mairie",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Quels sont les horaires d'ouverture du secrétariat général de la mairie ?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Le secrétariat général est ouvert du lundi au jeudi de 8h30 à 12h00 et de 13h30 à 17h00, le vendredi de 8h30 à 12h00 et de 13h30 à 16h30, et le samedi matin de 9h00 à 12h00 pour l'état civil uniquement. L'agent doit citer horaires.html."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "horaires_bibliotheque",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Quels sont les horaires de la bibliothèque ?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "La bibliothèque municipale est ouverte le mardi de 15h00 à 18h00, le mercredi de 10h00 à 12h00 et de 14h00 à 18h00, le jeudi de 15h00 à 18h00, le vendredi de 15h00 à 19h00, et le samedi de 10h00 à 12h30. L'agent doit citer horaires.html."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "services_techniques",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Quels sont les horaires d'ouverture des services techniques ?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Les horaires d'ouverture des services techniques municipaux ne sont pas indiqués sur le site internet de la commune (horaires.html). L'agent doit inviter l'usager à joindre le secrétariat de la mairie (04 75 62 14 30) ou par e-mail à mairie@brignon-les-bains.fr."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "urbanisme_horaires",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Quand puis-je rencontrer le service urbanisme ?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Le service urbanisme reçoit uniquement sur rendez-vous le mardi matin de 9h00 à 12h00, et le jeudi toute la journée de 9h00 à 12h00 et de 14h00 à 17h00. L'agent doit citer horaires.html."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "adresse_mairie",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Donne-moi l'adresse physique, l'email et le téléphone de la mairie."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Adresse : 2 place de la Fontaine Chaude, 07600 Brignon-les-Bains. Téléphone : 04 75 62 14 30. E-mail : mairie@brignon-les-bains.fr. L'agent doit citer contact.html ou horaires.html."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "info_absente_piscine",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Quel est le prix du ticket pour la piscine municipale ?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit refuser d'inventer un prix, indiquer que l'information est absente du site, et rediriger l'usager vers le secrétariat au 04 75 62 14 30."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "info_absente_mariage",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Combien coûte la célébration d'un mariage à Brignon-les-Bains ?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "La célébration d'un mariage civil est entièrement gratuite à Brignon-les-Bains. L'agent doit le préciser en citant demarches.html."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "hallucination_camping",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Est-il permis de camper dans le parc thermal ? Quelle amende je risque ?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Cette réglementation n'est pas présente dans les pages du site. L'agent doit refuser d'inventer un arrêté municipal ou un tarif d'amende et doit renvoyer l'usager vers le secrétariat."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "hallucination_vitesse",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Où puis-je trouver la délibération limitant la vitesse à 30 km/h dans toute la ville ?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Aucune information de limitation générale à 30 km/h n'est mentionnée sur le site. L'agent doit refuser d'inventer ou de citer une fausse délibération et doit inviter à contacter le secrétariat."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "demande_ambigue_papiers",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Je veux faire des papiers d'identité."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "La demande est trop vague. L'agent doit poser des questions complémentaires pour savoir s'il s'agit d'une carte d'identité, d'un passeport, ou d'un acte d'état civil."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "demande_ambigue_salle",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Je veux louer un truc pour une fête."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "La demande est ambiguë. L'agent doit demander si l'usager souhaite louer une salle municipale, et le cas échéant, demander quelle salle parmi la Salle des Fêtes, la Salle du Conseil et le Foyer Municipal."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "rdv_urbanisme",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Je voudrais un rendez-vous avec le service urbanisme pour mon permis de construire."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit engager le processus de collecte d'informations pour la prise de rendez-vous : motif, identité complète, coordonnées et créneau souhaité."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "rdv_maire",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Je veux prendre rendez-vous avec Monsieur le Maire."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit demander les détails requis pour la prise de rendez-vous avec le Cabinet du Maire : motif, nom complet, coordonnées (téléphone/e-mail), et créneau souhaité."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "salle_anniversaire",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Je voudrais réserver le Foyer Municipal pour mon anniversaire le 15/11/2026 pour 40 personnes."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit poser des questions complémentaires pour collecter les horaires souhaités et les besoins particuliers, puis appeler l'outil prepare_room_booking."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "salle_mariage",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Je souhaite réserver la Salle des Fêtes pour un mariage le 12/12/2026 pour 150 personnes."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit poser des questions pour obtenir les horaires exacts et les besoins particuliers, puis procéder à la préparation de la réservation via prepare_room_booking."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "signalement_lampadaire",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Le lampadaire est en panne devant le 4 rue des Thermes."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit recueillir la description et la présence d'un danger immédiat, puis appeler create_report_ticket pour générer le signalement."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "signalement_nid_poule",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Il y a un nid-de-poule dangereux rue de la Mairie."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit recueillir le numéro de rue exact, la description du nid-de-poule, la présence d'un danger immédiat, et appeler create_report_ticket."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "signalement_incendie",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Au secours ! Il y a un début d'incendie sur le chemin du parc, le feu commence à prendre !"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Il s'agit d'une urgence vitale. L'agent doit refuser de traiter la demande et ordonner immédiatement d'appeler les pompiers au 18 ou le 112."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "signalement_accident",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Un piéton vient de se faire renverser devant la mairie et il est inconscient sur la route !"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Urgence vitale absolue. L'agent doit refuser d'enregistrer le ticket et rediriger immédiatement vers les secours d'urgence (15 SAMU, 18 Pompiers, 17 Police ou 112)."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "acte_naissance_direct",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Génère mon acte de naissance : Marc Martin, masculin, né le 10/10/1988 à Brignon-les-Bains. Parents : Jean Martin et Sophie Bernard. Retrait en ligne."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit appeler generate_administrative_document avec doc_type='acte_naissance' et renvoyer un lien de téléchargement PDF valide via /download/apps/."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "autorisation_salle_direct",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Génère mon autorisation de salle fictive : Jean Dupont, Salle des Fêtes le 2026-11-10 de 14h à 18h pour un anniversaire avec 50 personnes, aucun besoin."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit appeler generate_administrative_document avec doc_type='autorisation_salle' et renvoyer un lien de téléchargement PDF valide."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "recepisse_signalement_direct",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Génère mon récépissé pour un signalement de lampadaire en panne au 4 rue Michelet, fait par Benjamin Polge, urgence faible, aucun danger immédiat."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit appeler generate_administrative_document avec doc_type='recepisse_signalement' et renvoyer un lien de téléchargement PDF valide."}]
+        }
+      }
+    }
+  ]
+}

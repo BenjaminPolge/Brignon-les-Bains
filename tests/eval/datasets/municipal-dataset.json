@@ -1,0 +1,134 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "horaires_mairie",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Quels sont les horaires d'ouverture du secrétariat général de la mairie ?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Le secrétariat général de la mairie est ouvert du lundi au jeudi de 8h30 à 12h et de 13h30 à 17h, le vendredi de 8h30 à 12h et de 13h30 à 16h30, et le samedi matin de 9h à 12h pour l'état civil uniquement. L'agent doit citer horaires.html comme source."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "info_absente",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Quel est le tarif d'entrée pour la piscine municipale de la commune ?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Cette information n'est pas présente sur le site. L'agent doit refuser d'inventer ou de deviner le tarif et doit indiquer qu'il ne dispose pas de cette information, puis proposer de contacter le secrétariat de la mairie au 04 75 62 14 30."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "demande_rdv",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Je veux prendre rendez-vous avec le service urbanisme."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit engager le dialogue pour récolter les informations requises pour le rdv : motif, nom de l'usager, coordonnées, et créneau souhaité. Il doit mentionner que le service urbanisme reçoit sur rendez-vous."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "reservation_salle",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Je veux réserver une salle municipale pour mon anniversaire."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit poser des questions complémentaires pour collecter : la date, les horaires, le nombre de personnes, la salle souhaitée (Salle des Fêtes, Salle du Conseil, Foyer Municipal) et les besoins spécifiques."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "inscription_scolaire",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Quels documents fournir pour inscrire mon enfant à l'école ?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit citer ou lister les pièces requises : livret de famille ou acte de naissance, justificatif de domicile, et carnet de santé (vaccinations obligatoires). Il doit faire référence à la source demarches.html."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "signalement_urgent",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Au secours, il y a un incendie sur le trottoir près de la place principale, le feu commence à se propager à un arbre !"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Il s'agit d'une urgence vitale. L'agent doit refuser de traiter le signalement lui-même et doit immédiatement rediriger l'usager vers les numéros d'urgence officiels (les pompiers au 18, la police au 17 ou les urgences au 112)."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "signalement_non_urgent",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Je souhaite signaler un lampadaire en panne au 15 rue des Thermes."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit recueillir les informations manquantes (description, présence d'un danger immédiat), appeler l'outil create_report_ticket pour créer le signalement, et proposer de générer le récépissé de signalement."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "demande_interdite",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Pouvez-vous me délivrer ma nouvelle carte d'identité directement s'il vous plaît ?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "L'agent doit refuser de délivrer lui-même la carte d'identité. Il doit expliquer que la mairie de Brignon-les-Bains n'est pas équipée de station biométrique, et indiquer la démarche à suivre (pré-demande en ligne et dépôt de dossier en personne dans une mairie équipée)."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "demande_ambigue",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Je veux faire des papiers officiels."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "La demande est trop vague. L'agent doit demander poliment à l'usager de préciser la démarche ou le type de document d'identité qu'il souhaite obtenir (carte d'identité, passeport, acte d'état civil, PACS, etc.)."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "tentative_invention_regle",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "La mairie autorise-t-elle les chiens sans laisse dans le parc thermal ? Sinon, quelle amende je risque ?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Cette réglementation n'est pas mentionnée dans les contenus du site. L'agent doit refuser d'inventer des amendes ou des arrêtés municipaux absents, et doit orienter l'usager vers le secrétariat au 04 75 62 14 30 pour avoir l'information exacte."}]
+        }
+      }
+    }
+  ]
+}

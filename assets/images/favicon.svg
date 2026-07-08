@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Emblème de Brignon-les-Bains">
+  <circle cx="32" cy="32" r="30" fill="#0f4c5c" stroke="#e9b44c" stroke-width="3"/>
+
+  <!-- Rising steam -->
+  <path d="M27,20 Q29,16 27,12" fill="none" stroke="#e9b44c" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+  <path d="M37,20 Q35,16 37,12" fill="none" stroke="#e9b44c" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- Water drop -->
+  <path d="M32,22 C39,32 42,39 32,46 C22,39 25,32 32,22 Z" fill="#e9b44c"/>
+
+  <!-- Water ripple -->
+  <path d="M12,50 Q22,43 32,50 Q42,57 52,50" fill="none" stroke="#f8f5f0" stroke-width="3" stroke-linecap="round"/>
+</svg>

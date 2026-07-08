@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Mairie de Brignon-les-Bains</title>
+<meta name="description" content="Coordonnées et plan d'accès de la mairie de Brignon-les-Bains.">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo-link">
+      <img src="assets/images/logo.svg" alt="Logo de la commune de Brignon-les-Bains" class="logo">
+      <span class="site-title">Brignon-les-Bains</span>
+    </a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="main-nav" id="main-nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="la-commune.html">La commune</a></li>
+        <li><a href="conseil-municipal.html">Conseil municipal</a></li>
+        <li><a href="actualites.html">Actualités</a></li>
+        <li><a href="voirie.html">Voirie &amp; travaux</a></li>
+        <li><a href="horaires.html">Horaires</a></li>
+        <li><a href="demarches.html">Démarches</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+<div class="page-header">
+  <div class="container">
+    <h1>Contact</h1>
+    <p class="lead">Une question, une démarche à effectuer ou simplement envie de nous écrire ? L'équipe de la mairie de Brignon-les-Bains est à votre écoute.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Nos coordonnées</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Adresse</h3>
+        <p>Mairie de Brignon-les-Bains<br>2 place de la Fontaine Chaude<br>07460 Brignon-les-Bains</p>
+      </div>
+      <div class="contact-card">
+        <h3>Téléphone et courriel</h3>
+        <p>Tél. 04 75 62 14 30<br>mairie@brignon-les-bains.fr</p>
+      </div>
+      <div class="contact-card">
+        <h3>Horaires du secrétariat</h3>
+        <p>Lundi au vendredi : 8h30-12h et 13h30-17h<br>Samedi (état civil uniquement) : 9h-12h</p>
+        <p>Consultez le détail des horaires de tous les services sur la page <a href="horaires.html">Horaires</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Accès et plan</h2>
+    <p>La mairie se trouve au cœur du village, sur la place de la Fontaine Chaude, à deux pas du lavoir couvert et du marché du samedi matin. Elle est accessible à pied depuis l'ensemble du bourg en quelques minutes.</p>
+    <p>En voiture, un parking public gratuit est disponible à proximité immédiate, avenue des Thermes. Un arrêt de la navette communale dessert également la place de la Fontaine Chaude plusieurs fois par jour.</p>
+    <svg viewBox="0 0 400 180" role="img" aria-label="Schéma d'accès simplifié au centre du village de Brignon-les-Bains" style="width:100%;max-width:420px;height:auto;">
+      <rect x="0" y="0" width="400" height="180" fill="none" />
+      <path d="M0 90 H400" stroke="currentColor" stroke-width="2" />
+      <path d="M120 0 V180" stroke="currentColor" stroke-width="2" />
+      <path d="M120 90 Q 200 40 320 60" stroke="currentColor" stroke-width="2" fill="none" />
+      <circle cx="120" cy="90" r="7" fill="currentColor" />
+      <text x="128" y="80" font-size="12">Place de la Fontaine Chaude</text>
+      <text x="128" y="105" font-size="11">Mairie</text>
+      <circle cx="320" cy="60" r="5" fill="currentColor" />
+      <text x="300" y="45" font-size="11">Thermes</text>
+      <text x="10" y="105" font-size="11">Avenue des Thermes</text>
+      <text x="128" y="15" font-size="11">Route des Cévennes</text>
+    </svg>
+    <div class="info-box">
+      <p>Un parking dédié aux personnes à mobilité réduite est disponible devant l'entrée principale de la mairie, place de la Fontaine Chaude.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Nous écrire</h2>
+    <p>Pour toute question qui ne nécessite pas de démarche officielle, vous pouvez utiliser le formulaire ci-dessous. Nos services vous répondront dans les meilleurs délais.</p>
+    <form action="#" class="contact-form">
+      <div class="form-group">
+        <label for="contact-nom" class="form-field">Nom et prénom</label>
+        <input type="text" id="contact-nom" name="nom" placeholder="Votre nom et prénom">
+      </div>
+      <div class="form-group">
+        <label for="contact-email" class="form-field">Adresse e-mail</label>
+        <input type="email" id="contact-email" name="email" placeholder="vous@exemple.fr">
+      </div>
+      <div class="form-group">
+        <label for="contact-message" class="form-field">Votre message</label>
+        <textarea id="contact-message" name="message" rows="5" placeholder="Écrivez votre message ici..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <h3>Mairie de Brignon-les-Bains</h3>
+      <p>2 place de la Fontaine Chaude<br>07460 Brignon-les-Bains</p>
+    </div>
+    <div class="footer-col">
+      <h3>Contact</h3>
+      <p>Tél. 04 75 62 14 30<br>mairie@brignon-les-bains.fr</p>
+    </div>
+    <div class="footer-col">
+      <h3>Horaires du secrétariat</h3>
+      <p>Lun-Ven : 8h30-12h / 13h30-17h<br>Sam (état civil) : 9h-12h</p>
+    </div>
+    <div class="footer-col">
+      <h3>Liens utiles</h3>
+      <ul class="footer-links">
+        <li><a href="actualites.html">Actualités</a></li>
+        <li><a href="conseil-municipal.html">Conseil municipal</a></li>
+        <li><a href="comptes-rendus.html">Comptes rendus du conseil</a></li>
+        <li><a href="voirie.html">Voirie &amp; travaux</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 Commune de Brignon-les-Bains — Site fictif à but de démonstration.</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

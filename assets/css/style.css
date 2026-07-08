@@ -1,0 +1,1203 @@
+/* =========================================================
+   Brignon-les-Bains — Design system
+   Site municipal fictif — CSS pur, sans dépendance externe
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. Variables globales
+   --------------------------------------------------------- */
+:root {
+  /* Couleurs */
+  --color-primary: #0f4c5c;
+  --color-primary-dark: #0a3540;
+  --color-accent: #e9b44c;
+  --color-accent-dark: #c9963a;
+  --color-bg: #f8f5f0;
+  --color-surface: #ffffff;
+  --color-text: #22333b;
+  --color-text-light: #5c6b73;
+  --color-border: #e0dcd3;
+
+  /* Typo */
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-heading: Georgia, "Times New Roman", serif;
+
+  /* Rayons / ombres */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 1px 3px rgba(15, 76, 92, 0.08);
+  --shadow-md: 0 6px 20px rgba(15, 76, 92, 0.12);
+
+  /* Layout */
+  --container-max: 1140px;
+  --header-height: 76px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+}
+
+/* ---------------------------------------------------------
+   2. Reset / base
+   --------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-accent-dark);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--color-primary-dark);
+  line-height: 1.25;
+  margin: 0 0 0.6em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Focus visible cohérent pour l'accessibilité clavier */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------------------------------------------------------
+   3. Utilitaires de layout
+   --------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  position: fixed;
+  left: 12px;
+  top: 12px;
+  width: auto;
+  height: auto;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------------------------------------------------------
+   4. En-tête / navigation
+   --------------------------------------------------------- */
+.site-header {
+  background: var(--color-primary);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  min-height: var(--header-height);
+  gap: 16px;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.logo-link:hover {
+  color: var(--color-accent);
+}
+
+.logo {
+  height: 44px;
+  width: 44px;
+  flex-shrink: 0;
+}
+
+.site-title {
+  font-family: var(--font-heading);
+  font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/* Bouton burger (mobile) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: var(--radius-sm);
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+
+.main-nav a {
+  display: inline-block;
+  padding: 10px 14px;
+  color: #f8f5f0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.main-nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-accent);
+}
+
+.main-nav a.active {
+  color: var(--color-primary-dark);
+  background: var(--color-accent);
+}
+
+.main-nav a.active:hover {
+  color: var(--color-primary-dark);
+}
+
+/* ---------------------------------------------------------
+   5. Pied de page
+   --------------------------------------------------------- */
+.site-footer {
+  background: var(--color-primary-dark);
+  color: #d7e2e4;
+  margin-top: 60px;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+  padding-top: 48px;
+  padding-bottom: 32px;
+}
+
+.footer-col h3 {
+  color: var(--color-accent);
+  font-size: 1.05rem;
+  margin-bottom: 0.5em;
+}
+
+.footer-col p {
+  color: #c6d3d6;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.footer-copy {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #9fb2b6;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 18px 20px;
+  margin: 0;
+}
+
+/* ---------------------------------------------------------
+   6. Bandeau d'en-tête de page (.page-header)
+   --------------------------------------------------------- */
+.page-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: #fff;
+  padding: 56px 0;
+  text-align: center;
+}
+
+.page-header h1 {
+  color: #fff;
+  margin-bottom: 0.4em;
+}
+
+.page-header .lead {
+  color: #dce8ea;
+  font-size: 1.15rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ---------------------------------------------------------
+   7. Hero (accueil uniquement)
+   --------------------------------------------------------- */
+.hero {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: #fff;
+  padding: 80px 0 72px;
+  text-align: center;
+}
+
+.hero h1 {
+  color: #fff;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  margin-bottom: 0.5em;
+}
+
+.hero .lead {
+  color: #dce8ea;
+  font-size: 1.2rem;
+  max-width: 620px;
+  margin: 0 auto 1.8em;
+}
+
+.hero .btn + .btn {
+  margin-left: 12px;
+}
+
+/* ---------------------------------------------------------
+   8. Boutons
+   --------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-primary-dark);
+  border-color: var(--color-accent);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+  color: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Variante du bouton outline sur fond clair (hors hero) */
+.section .btn-outline,
+.card .btn-outline,
+.contact-card .btn-outline {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.section .btn-outline:hover,
+.card .btn-outline:hover,
+.contact-card .btn-outline:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* ---------------------------------------------------------
+   9. Sections
+   --------------------------------------------------------- */
+.section {
+  padding: 56px 0;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  margin-bottom: 0.8em;
+  position: relative;
+  padding-bottom: 14px;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 56px;
+  height: 4px;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+.section-title.center {
+  text-align: center;
+}
+
+.section-title.center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ---------------------------------------------------------
+   10. Cards
+   --------------------------------------------------------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5em;
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+.card > :first-child {
+  margin-top: 0;
+}
+
+/* ---------------------------------------------------------
+   11. Chiffres clés (.stat / .stat-grid)
+   --------------------------------------------------------- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+  text-align: center;
+}
+
+.stat {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 16px;
+}
+
+.stat strong,
+.stat .stat-value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 0.3em;
+}
+
+.stat span,
+.stat .stat-label {
+  display: block;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ---------------------------------------------------------
+   12. Table des horaires
+   --------------------------------------------------------- */
+.table-horaires {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.table-horaires caption {
+  text-align: left;
+  font-weight: 700;
+  padding-bottom: 10px;
+  color: var(--color-primary-dark);
+}
+
+.table-horaires thead th {
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 18px;
+  font-size: 0.9rem;
+}
+
+.table-horaires tbody td,
+.table-horaires tbody th {
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.table-horaires tbody th {
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.table-horaires tbody tr:nth-child(even) {
+  background: var(--color-bg);
+}
+
+.table-horaires tbody tr:last-child td,
+.table-horaires tbody tr:last-child th {
+  border-bottom: none;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Rendre la table scrollable sur mobile sans wrapper obligatoire */
+@media (max-width: 640px) {
+  .table-horaires {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* ---------------------------------------------------------
+   13. Encadrés d'information
+   --------------------------------------------------------- */
+.info-box {
+  background: #eef6f4;
+  border: 1px solid #cfe3de;
+  border-left: 5px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  margin: 24px 0;
+}
+
+.info-box p:last-child {
+  margin-bottom: 0;
+}
+
+.info-box.warning {
+  background: #fdf3e3;
+  border-color: #f0dcae;
+  border-left-color: var(--color-accent-dark);
+}
+
+/* ---------------------------------------------------------
+   14. Accordéon (démarches)
+   --------------------------------------------------------- */
+.accordion {
+  border-top: 1px solid var(--color-border);
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--color-surface);
+  border: none;
+  text-align: left;
+  padding: 18px 4px;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  cursor: pointer;
+}
+
+.accordion-header::after {
+  content: "+";
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: transform var(--transition-base), background var(--transition-fast);
+}
+
+.accordion-item.open .accordion-header::after {
+  content: "\2212"; /* signe moins */
+  transform: rotate(180deg);
+  background: var(--color-accent);
+  color: var(--color-primary-dark);
+}
+
+.accordion-panel {
+  display: none;
+  padding: 0 4px 20px;
+  color: var(--color-text-light);
+}
+
+.accordion-item.open .accordion-panel {
+  display: block;
+}
+
+.accordion-panel p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------
+   15. Contact
+   --------------------------------------------------------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.contact-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5em;
+}
+
+.contact-card > :first-child {
+  margin-top: 0;
+}
+
+.contact-card iframe,
+.contact-card img {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+/* ---------------------------------------------------------
+   16. Formulaires
+   --------------------------------------------------------- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--color-primary-dark);
+}
+
+.form-field .required {
+  color: var(--color-accent-dark);
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 11px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(15, 76, 92, 0.15);
+  background: var(--color-surface);
+}
+
+.form-field textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.form-field small {
+  color: var(--color-text-light);
+  font-size: 0.82rem;
+}
+
+/* Champs génériques hors .form-field, au cas où */
+label {
+  font-weight: 600;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* ---------------------------------------------------------
+   17. Responsive — navigation mobile
+   --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-primary-dark);
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform var(--transition-base), opacity var(--transition-base), visibility var(--transition-base);
+    overflow-y: auto;
+  }
+
+  .main-nav.is-open {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px 20px 32px;
+  }
+
+  .main-nav a {
+    padding: 16px 8px;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1.05rem;
+  }
+
+  .main-nav a.active {
+    background: transparent;
+    color: var(--color-accent);
+  }
+}
+
+@media (min-width: 901px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .main-nav {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Resserre la nav sur les écrans intermédiaires (tablette/petit ordinateur)
+   pour laisser la place au nom de la commune sans le faire déborder */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .main-nav ul {
+    gap: 0;
+  }
+
+  .main-nav a {
+    padding: 10px 9px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   18. Responsive — ajustements généraux
+   --------------------------------------------------------- */
+@media (max-width: 640px) {
+  .site-title {
+    font-size: 1.05rem;
+  }
+
+  .logo {
+    height: 38px;
+    width: 38px;
+  }
+
+  .hero {
+    padding: 56px 0 48px;
+  }
+
+  .hero .btn {
+    display: block;
+    width: 100%;
+    margin: 0 0 12px !important;
+  }
+
+  .page-header {
+    padding: 40px 0;
+  }
+
+  .section {
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
+/* ---------------------------------------------------------
+   19. Liens utiles (pied de page)
+   --------------------------------------------------------- */
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links a {
+  color: #d7e2e4;
+  font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+  color: var(--color-accent);
+}
+
+/* ---------------------------------------------------------
+   20. Étiquette de catégorie (actualités)
+   --------------------------------------------------------- */
+.tag {
+  display: inline-block;
+  background: var(--color-bg);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 0.8em;
+}
+
+/* =========================================================
+   21. Module de Chat Brigitte (Assistant de mairie)
+   ========================================================= */
+#municipal-chat-trigger {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(15, 76, 92, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+#municipal-chat-trigger:hover {
+  transform: scale(1.08);
+  background-color: var(--color-primary-dark);
+}
+
+#municipal-chat-trigger svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+#municipal-chat-box {
+  position: fixed;
+  bottom: 95px;
+  right: 25px;
+  width: 400px;
+  height: 600px;
+  max-height: 80vh;
+  max-width: 90vw;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+  font-family: var(--font-body);
+  transition: width 0.3s ease, height 0.3s ease, bottom 0.3s ease, right 0.3s ease;
+}
+
+#municipal-chat-box.expanded {
+  bottom: 20px;
+  right: 20px;
+  width: calc(100vw - 40px);
+  height: calc(100vh - 40px);
+  max-width: none;
+  max-height: none;
+}
+
+#municipal-chat-box.open {
+  display: flex;
+  animation: chatSlideIn 0.3s ease;
+}
+
+@keyframes chatSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-header {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header h3 {
+  color: white;
+  margin: 0;
+  font-size: 1.15rem;
+  font-family: var(--font-heading);
+}
+
+.chat-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.chat-header-actions button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.chat-header-actions button:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.chat-header-actions .chat-close {
+  font-size: 1.5rem;
+}
+
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #fcfbfa;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-message {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background-color: var(--color-primary);
+  color: white;
+  border-bottom-right-radius: 2px;
+}
+
+.chat-message.assistant {
+  align-self: flex-start;
+  background-color: white;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-bottom-left-radius: 2px;
+  white-space: pre-wrap;
+}
+
+.chat-message.system {
+  align-self: center;
+  background-color: transparent;
+  color: var(--color-text-light);
+  font-size: 0.8rem;
+  text-align: center;
+  max-width: 100%;
+}
+
+.chat-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 15px;
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.chat-suggestion-btn {
+  background-color: white;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+  line-height: 1.2;
+}
+
+.chat-suggestion-btn:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.chat-input-area {
+  padding: 12px 15px;
+  background-color: white;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input-area input {
+  flex-grow: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  outline: none;
+}
+
+.chat-input-area input:focus {
+  border-color: var(--color-primary);
+}
+
+.chat-input-area button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.92rem;
+  transition: background-color var(--transition-fast);
+}
+
+.chat-input-area button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.chat-loading {
+  align-self: flex-start;
+  background-color: white;
+  color: var(--color-text-light);
+  border: 1px solid var(--color-border);
+  border-bottom-left-radius: 2px;
+  padding: 8px 14px;
+  border-radius: 14px;
+  font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chat-loading-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.chat-loading-dots span {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-text-light);
+  border-radius: 50%;
+  display: inline-block;
+  animation: chatDotBlink 1.4s infinite both;
+}
+
+.chat-loading-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.chat-loading-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes chatDotBlink {
+  0% { opacity: 0.2; }
+  20% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+

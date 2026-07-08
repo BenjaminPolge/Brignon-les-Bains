@@ -2,7 +2,7 @@
 
 > ⚠️ **DÉMONSTRATION UNIQUEMENT.** Ce dépôt est une **démonstration d'un agent IA construit en CLI** (avec `agents-cli`, l'outil en ligne de commande de Google fondé sur l'ADK). Ce n'est **pas un service en production**. **Brignon-les-Bains est une commune fictive** : la ville thermale, ses habitants, ses services et tous les documents produits par l'agent sont imaginaires et n'ont **aucune valeur légale ou administrative**.
 
-> 📰 **À lire :** l'outil `agents-cli` utilisé ici est présenté dans cet article du *Journal du Net* — [« Créer un agent IA complet sans coder : notre test du nouvel outil de Google »](https://www.journaldunet.com/intelligence-artificielle/1552487-creer-un-agent-ia-complet-sans-coder-notre-test-du-nouvel-outil-de-google/).
+> 📰 **C'est le projet présenté dans la presse.** Cette démonstration est précisément celle décrite dans l'article du *Journal du Net* — [« Créer un agent IA complet sans coder : notre test du nouvel outil de Google »](https://www.journaldunet.com/intelligence-artificielle/1552487-creer-un-agent-ia-complet-sans-coder-notre-test-du-nouvel-outil-de-google/) : l'agent municipal « Brigitte » y sert de cas d'usage pour tester `agents-cli`, l'outil no-code de Google.
 
 ## Description
 
